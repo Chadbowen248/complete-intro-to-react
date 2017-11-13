@@ -1,13 +1,20 @@
-import React from 'react';
+import React from "react";
 
-const Landing = () => (
-  <div className="landing">
-    <h1>svideo</h1>
-    <input type="text" placeholder="Search" />
-    <a>or Browse All</a>
-  </div>
-);
+class ComicCollection extends React.Component {
+ state = {
+   collection: []
+ }
+  render() {
+    return (
+      <div className="landing">
+        <h1>svideo</h1>
+        <input type="text" placeholder="Search" />
+        <a>or Browse All</a>
+      </div>
+    );
+  }
+}
 
-export default Landing;
+export default ComicCollection;
 
 // this should be comics collection page
