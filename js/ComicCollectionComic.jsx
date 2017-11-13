@@ -10,32 +10,40 @@ padding: 1em;
 margin-top: .5em;
 margin-bottom: .5em;
 margin-right: 1%;
-`
+`;
 const ComicImage = styled.img`
   width: 100%;
-`
+  height: 85%;
+`;
+const ComicTitle = styled.p`
+font-size: 1vw;
+font-family: 'Fjalla One', sans-serif;
+color: #333;
+`;
+const ComicDeleteBtn = styled.button`
+  background-color: transparent;
+  border: none;
+`;
 
-const ComicCollectionComic = props =>
+const ComicCollectionComic = props => (
   <SingleComic>
     <ComicImage
-      className="comic-collection__image"
       src={props.details.image.medium_url}
       alt="comic"
     />
-    <p className="comic-container__title">
-      {props.details.finalName.length > 47 ? `${props.details.finalName.substring(0,47)} ...` : props.details.finalName}
-    </p>
-    <button
+    <ComicTitle>
+      {props.details.finalName.length > 47
+        ? `${props.details.finalName.substring(0, 47)} ...`
+        : props.details.finalName}
+    </ComicTitle>
+    <ComicDeleteBtn
       className="comic-delete-button"
       onClick={() => props.removeComic(`comic-${props.details.id}`)}
     >
-      <img
-        className="comic-delete-image"
-        src="public/img/close.png"
-        alt="close"
-      />
-    </button>
-  </SingleComic>;
+      <img src="public/img/close.png" alt="close" />
+    </ComicDeleteBtn>
+  </SingleComic>
+);
 
 export default ComicCollectionComic;
 

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import base from "./base";
 import ComicCollectionComic from "./ComicCollectionComic";
 
 const ComicWrapper = styled.div`
@@ -17,16 +16,6 @@ class ComicCollection extends React.Component {
     collection: [],
     searchTerm: ""
   };
-  componentWillMount() {
-    this.ref = base.syncState(`/`, {
-      context: this,
-      state: "collection"
-    });
-  }
-
-  componentWillUnmount() {
-    base.removeBinding(this.ref);
-  }
 
   handleSearchTermChange = event => {
     this.setState({ searchTerm: event.target.value });
