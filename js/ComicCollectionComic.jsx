@@ -1,9 +1,23 @@
 import React from "react";
+import styled from "styled-components";
 import { shape, func } from "prop-types";
 
+const SingleComic = styled.div`
+width: 23%;
+margin-left: 1%;
+border: 1px solid #ccc;
+padding: 1em;
+margin-top: .5em;
+margin-bottom: .5em;
+margin-right: 1%;
+`
+const ComicImage = styled.img`
+  width: 100%;
+`
+
 const ComicCollectionComic = props =>
-  <div className="comic-container__comic">
-    <img
+  <SingleComic>
+    <ComicImage
       className="comic-collection__image"
       src={props.details.image.medium_url}
       alt="comic"
@@ -21,7 +35,7 @@ const ComicCollectionComic = props =>
         alt="close"
       />
     </button>
-  </div>;
+  </SingleComic>;
 
 export default ComicCollectionComic;
 

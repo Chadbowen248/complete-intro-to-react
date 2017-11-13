@@ -1,11 +1,21 @@
 import React from "react";
+import styled from "styled-components";
 import base from "./base";
 import ComicCollectionComic from "./ComicCollectionComic";
+
+const ComicWrapper = styled.div`
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+margin-top: 1.5em;
+margin-bottom: 1.5em;
+justify-content: flex-start;
+`;
 
 class ComicCollection extends React.Component {
   state = {
     collection: [],
-    searchTerm: ''
+    searchTerm: ""
   };
   componentWillMount() {
     this.ref = base.syncState(`/`, {
@@ -19,17 +29,17 @@ class ComicCollection extends React.Component {
   }
 
   handleSearchTermChange = event => {
-    this.setState({ searchTerm: event.target.value })
-  }
+    this.setState({ searchTerm: event.target.value });
+  };
 
   removeComic = comic => {
-    this.state.collection[comic] = null
-    this.setState({ collection: this.state.collection })
-  }
+    this.state.collection[comic] = null;
+    this.setState({ collection: this.state.collection });
+  };
 
   render() {
     return (
-      <div className="landing">
+      <div>
         <h1>Collection</h1>
         <input
           type="text"
@@ -37,7 +47,7 @@ class ComicCollection extends React.Component {
           value={this.state.searchTerm}
           onChange={this.handleSearchTermChange}
         />
-        <div className="comic-container">
+        <ComicWrapper>
           {Object.entries(this.state.collection)
             .sort((a, b) => {
               if (
@@ -59,9 +69,13 @@ class ComicCollection extends React.Component {
                   .indexOf(this.state.searchTerm.toUpperCase()) >= 0
             )
             .map(comic => (
-              <ComicCollectionComic details={comic[1]} key={comic[1].id} removeComic={this.removeComic}/>
+              <ComicCollectionComic
+                details={comic[1]}
+                key={comic[1].id}
+                removeComic={this.removeComic}
+              />
             ))}
-        </div>
+        </ComicWrapper>
       </div>
     );
   }
