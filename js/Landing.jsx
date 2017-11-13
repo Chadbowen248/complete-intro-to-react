@@ -1,9 +1,20 @@
 import React from "react";
+import base from "./base";
 
 class ComicCollection extends React.Component {
  state = {
    collection: []
  }
+ componentWillMount() {
+  this.ref = base.syncState(`/`, {
+    context: this,
+    state: "collection"
+  })
+}
+
+componentWillUnmount() {
+  base.removeBinding(this.ref)
+}
   render() {
     return (
       <div className="landing">
