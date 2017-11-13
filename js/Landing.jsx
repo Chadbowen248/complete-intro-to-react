@@ -9,3 +9,5 @@ const Landing = () => (
 );
 
 export default Landing;
+
+// this should be comics collection page
