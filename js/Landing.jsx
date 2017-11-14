@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { shape } from "prop-types";
 import ComicCollectionComic from "./ComicCollectionComic";
 
 const ComicWrapper = styled.div`
@@ -9,7 +10,16 @@ width: 100%;
 margin-top: 1.5em;
 margin-bottom: 1.5em;
 justify-content: flex-start;
+padding-right: .5em;
+padding-left: .5em;
 `;
+
+const ComicSearch = styled.input`
+margin-top: 1.5em;
+width: 100%;
+height: 50px;
+text-align: center;
+`
 
 class ComicCollection extends React.Component {
   state = {
@@ -28,8 +38,7 @@ class ComicCollection extends React.Component {
   render() {
     return (
       <div>
-        <h1>Collection</h1>
-        <input
+        <ComicSearch
           type="text"
           placeholder="Search"
           value={this.state.searchTerm}
@@ -68,6 +77,9 @@ class ComicCollection extends React.Component {
     );
   }
 }
+ComicCollection.propTypes = {
+  collection: shape.isRequired,
+};
 
 export default ComicCollection;
 
