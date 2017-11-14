@@ -1,6 +1,16 @@
 import React from 'react';
 
-const Search = () => <h1>hi lol this is search</h1>;
+
+class Search extends React.Component {
+  render(){
+    return(
+      <form action="http://localhost:3000/test" method="get">
+        <input name="search_term"/>
+        <button>click me</button>
+      </form>
+    )
+  }
+}
 
 export default Search;
 
