@@ -11,6 +11,7 @@ app.use((req, res, next) => {
 })
 app.get("/test", (req, res) => {
   const testing = req.body.search_term
+  console.log(req.body)
   res.send(testing)
 });
 
