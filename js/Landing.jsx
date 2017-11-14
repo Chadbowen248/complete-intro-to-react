@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ComicCollectionComic from "./ComicCollectionComic";
+// import ComicCollectionComic from "./ComicCollectionComic";
 
 const ComicWrapper = styled.div`
 display: flex;
@@ -13,7 +13,7 @@ justify-content: flex-start;
 
 class ComicCollection extends React.Component {
   state = {
-    collection: [],
+    // collection: [],
     searchTerm: ""
   };
 
@@ -37,7 +37,7 @@ class ComicCollection extends React.Component {
           onChange={this.handleSearchTermChange}
         />
         <ComicWrapper>
-          {Object.entries(this.state.collection)
+          {/* {Object.entries(this.state.collection)
             .sort((a, b) => {
               if (
                 a[1].finalName.replace(/^Absolute /, "") <
@@ -63,7 +63,7 @@ class ComicCollection extends React.Component {
                 key={comic[1].id}
                 removeComic={this.removeComic}
               />
-            ))}
+            ))} */}
         </ComicWrapper>
       </div>
     );
