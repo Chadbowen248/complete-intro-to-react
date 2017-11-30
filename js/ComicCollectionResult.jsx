@@ -1,18 +1,36 @@
 import React from "react"
+import styled from "styled-components";
 import { shape, func, number } from "prop-types"
 
+const SingleComic = styled.div`
+width: 23%;
+margin-left: 1%;
+border: 1px solid #ccc;
+padding: 1em;
+margin-top: .5em;
+margin-bottom: .5em;
+margin-right: 1%;
+`;
+const ComicImage = styled.img`
+  width: 100%;
+  height: 85%;
+`;
+const ComicTitle = styled.p`
+font-size: 1vw;
+font-family: 'Fjalla One', sans-serif;
+color: #333;
+`;
 const ComicCollectionResult = props =>
   // const addButton = props.details.count_of_issues === 1 ? 'Add Me' : 'disabled';
-  <div className="comic-container__comic" key={props.details.id}>
-    <img
-      className="comic-results__image"
+  <SingleComic>
+    <ComicImage
       src={props.details.image.medium_url}
       alt=""
       onLoad={() => props.haveImagesLoaded("results")}
     />
-    <p className="comic-container__title">
+    <ComicTitle>
       {props.details.name}
-    </p>
+    </ComicTitle>
     <button
       className={props.isOnlyIssue === 1 ? "comic-results-add-button" : "comic-results-add-button__disabled"}
       onClick={() => props.addComic(props.details)}
@@ -20,7 +38,7 @@ const ComicCollectionResult = props =>
       Add Comic
     </button>
 
-    <button
+    {/* <button
       className={props.isOnlyIssue > 1 ? "comic-results-add-button" : "comic-results-add-button__disabled"}
       onClick={() =>
         props.deeperSearch(
@@ -28,16 +46,16 @@ const ComicCollectionResult = props =>
         )}
     >
       go deeper
-    </button>
+    </button> */}
     <div className="comic-vine-info">
-      <a href={props.details.site_detail_url}>
+      {/* <a href={props.details.site_detail_url}>
         <img className="cvlogo" src="public/img/cvlogo.png" alt="" />
-      </a>
+      </a> */}
       <span className="comic-container__title">
         Issues in volume: {props.details.count_of_issues}
       </span>
     </div>
-  </div>
+  </SingleComic>
 
 export default ComicCollectionResult
 
