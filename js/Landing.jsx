@@ -30,10 +30,10 @@ class ComicCollection extends React.Component {
     this.setState({ searchTerm: event.target.value });
   };
 
-  removeComic = comic => {
-    this.state.collection[comic] = null;
-    this.setState({ collection: this.state.collection });
-  };
+  // removeComic = comic => {
+  //   this.state.collection[comic] = null;
+  //   this.setState({ collection: this.state.collection });
+  // };
 
   render() {
     return (
@@ -69,7 +69,7 @@ class ComicCollection extends React.Component {
               <ComicCollectionComic
                 details={comic[1]}
                 key={comic[1].id}
-                removeComic={this.removeComic}
+                removeComic={this.props.removeComic}
               />
             ))}
         </ComicWrapper>

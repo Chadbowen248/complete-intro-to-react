@@ -33,14 +33,15 @@ class Search extends React.Component {
     searchTerm: "",
     results: []
   };
+
+
+
   handleChange = event => {
     this.setState({ searchTerm: event.target.value });
-    console.log(this.state.searchTerm);
   };
 
   searchForComic = () => {
     const searchTerm = this.state.searchTerm;
-    console.log(searchTerm);
     Axios.get(
       `http://localhost:3000/comicvine_api?search_term=${searchTerm}`
     ).then(results => this.setState({ results: results.data }));
@@ -50,7 +51,7 @@ class Search extends React.Component {
       <ComicCollectionResult
         key={comic.id}
         details={comic}
-        addComic={this.addComic}
+        addComic={this.props.addComic}
         isOnlyIssue={comic.count_of_issues}
         deeperSearch={this.deeperSearch}
         haveImagesLoaded={this.haveImagesLoaded}

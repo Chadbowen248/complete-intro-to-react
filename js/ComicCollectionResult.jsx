@@ -38,15 +38,6 @@ const ComicCollectionResult = props =>
       Add Comic
     </button>
 
-    {/* <button
-      className={props.isOnlyIssue > 1 ? "comic-results-add-button" : "comic-results-add-button__disabled"}
-      onClick={() =>
-        props.deeperSearch(
-          `${props.details.api_detail_url}?api_key=2736f1620710c52159ba0d0aea337c59bd273816&format=json`
-        )}
-    >
-      go deeper
-    </button> */}
     <div className="comic-vine-info">
       {/* <a href={props.details.site_detail_url}>
         <img className="cvlogo" src="public/img/cvlogo.png" alt="" />
