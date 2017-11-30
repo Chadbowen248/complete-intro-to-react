@@ -3,7 +3,7 @@ const cors = require('cors');
 const Axios = require("axios")
 
 const app = express()
-app.use(cors()); 
+app.use(cors());
 
 app.get("/comicvine_api", (req, res) => {
   const searchTerm = req.query.search_term
@@ -13,3 +13,5 @@ app.get("/comicvine_api", (req, res) => {
 })
 
 app.listen(3000, () => console.log("Example app listening on port 3000!"))
+
+
