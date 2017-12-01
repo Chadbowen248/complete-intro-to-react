@@ -30,10 +30,6 @@ class ComicCollection extends React.Component {
     this.setState({ searchTerm: event.target.value });
   };
 
-  // removeComic = comic => {
-  //   this.state.collection[comic] = null;
-  //   this.setState({ collection: this.state.collection });
-  // };
 
   render() {
     return (

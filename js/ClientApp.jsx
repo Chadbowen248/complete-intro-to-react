@@ -8,7 +8,9 @@ import Navigation from "./Navigation";
 
 class App extends React.Component {
   state = {
-    collection: []
+    collection: [],
+    titleInput: "",
+    imagePath: ""
   };
 
   componentWillMount() {
@@ -22,6 +24,13 @@ class App extends React.Component {
     base.removeBinding(this.ref);
   }
 
+  handleTitleInput = event => {
+    this.setState({ titleInput: event.target.value });
+  };
+  handleImagePath = event => {
+    this.setState({ imagePath: event.target.value });
+  };
+
   removeComic = comic => {
     this.state.collection[comic] = null;
     this.setState({ collection: this.state.collection });
@@ -29,7 +38,6 @@ class App extends React.Component {
 
   addComic = comic => {
     const collection = { ...this.state.collection };
-    console.log(collection);
     const words = [
       ["One", 1],
       ["Two", 2],
@@ -57,6 +65,13 @@ class App extends React.Component {
     // alert(`${comic.finalName} added!!`)
     // localStorage.setItem(`comic-${comic.id}`, JSON.stringify(comic))
   };
+
+  addComicManually = comic => {
+    const collection = { ...this.state.collection };
+    collection[`comic-${comic.id}`] = comic;
+    this.setState({ collection });
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -74,7 +89,16 @@ class App extends React.Component {
           />
           <Route
             path="/search"
-            render={() => <Search addComic={this.addComic} />}
+            render={() => (
+              <Search
+                addComic={this.addComic}
+                addComicManually={this.addComicManually}
+                handleTitleInput={this.handleTitleInput}
+                handleImagePath={this.handleImagePath}
+                title={this.state.titleInput}
+                image={this.state.imagePath}
+              />
+            )}
           />
         </div>
       </BrowserRouter>

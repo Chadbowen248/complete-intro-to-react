@@ -29,6 +29,7 @@ const ComicCollectionComic = props => (
   <SingleComic>
     <ComicImage
       src={props.details.image.medium_url}
+      // src={props.details.image.medium_url || props.details.image}
       alt="comic"
     />
     <ComicTitle>

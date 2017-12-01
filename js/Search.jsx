@@ -34,8 +34,6 @@ class Search extends React.Component {
     results: []
   };
 
-
-
   handleChange = event => {
     this.setState({ searchTerm: event.target.value });
   };
@@ -58,6 +56,11 @@ class Search extends React.Component {
         modal={this.state.modal}
       />
     ));
+    const manualEntryComic = {
+      finalName: this.props.title,
+      image:{medium_url: this.props.image} ,
+      id: `man-${Date.now()}`
+    }
     return (
       <div>
         <ComicSearchComicVine
@@ -65,10 +68,27 @@ class Search extends React.Component {
           type="text"
           onChange={this.handleChange}
         />
-        <SubmitButton type="submit" onClick={this.searchForComic} asdf/>
+        <SubmitButton type="submit" onClick={this.searchForComic} asdf />
         <ComicWrapper>
           {firstSearch}
         </ComicWrapper>
+        <div>
+
+          <input
+            type="text"
+            value={this.props.title}
+            onChange={this.props.handleTitleInput}
+          />
+
+          <input
+            type="text"
+            value={this.props.image}
+            onChange={this.props.handleImagePath}
+          />
+
+          <button onClick={() =>this.props.addComicManually(manualEntryComic)}>clickme</button>
+
+        </div>
       </div>
     );
   }
