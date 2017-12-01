@@ -2,6 +2,7 @@ import React from "react";
 import Axios from "axios";
 import styled from "styled-components";
 import ComicCollectionResult from "./ComicCollectionResult";
+import ManComic from "./manComic";
 
 const ComicWrapper = styled.div`
 display: flex;
@@ -56,13 +57,16 @@ class Search extends React.Component {
         modal={this.state.modal}
       />
     ));
-    const manualEntryComic = {
-      finalName: this.props.title,
-      image:{medium_url: this.props.image} ,
-      id: `man-${Date.now()}`
-    }
+
     return (
       <div>
+        <ManComic
+          handleTitleInput={this.props.handleTitleInput}
+          title={this.props.title}
+          handleImagePath={this.props.handleImagePath}
+          image={this.props.image}
+          addComicManually={this.props.addComicManually}
+        />
         <ComicSearchComicVine
           name="search"
           type="text"
@@ -72,23 +76,7 @@ class Search extends React.Component {
         <ComicWrapper>
           {firstSearch}
         </ComicWrapper>
-        <div>
 
-          <input
-            type="text"
-            value={this.props.title}
-            onChange={this.props.handleTitleInput}
-          />
-
-          <input
-            type="text"
-            value={this.props.image}
-            onChange={this.props.handleImagePath}
-          />
-
-          <button onClick={() =>this.props.addComicManually(manualEntryComic)}>clickme</button>
-
-        </div>
       </div>
     );
   }
