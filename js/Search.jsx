@@ -16,9 +16,12 @@ padding-left: .5em;
 `;
 
 const ComicSearchComicVine = styled.input`
-margin-top: 1.5em;
-width: 100%;
-height: 50px;
+margin: 0 auto;
+margin-top: 10px;
+display: block;
+width: 95%;
+padding: 5px;
+height: 40px;
 text-align: center;
 `;
 const SubmitButton = styled.input`
@@ -28,6 +31,13 @@ width: 200px;
 display: block;
 padding: 5px;
 `;
+
+const h1 = {
+  marginLeft: "35px",
+  fontFamily: "Coda",
+  textTransform: "uppercase",
+  fontSize: "16px"
+};
 
 class Search extends React.Component {
   state = {
@@ -60,6 +70,7 @@ class Search extends React.Component {
 
     return (
       <div>
+        <h1 style={h1} >Add a comic</h1>
         <ManComic
           handleTitleInput={this.props.handleTitleInput}
           title={this.props.title}
@@ -67,12 +78,14 @@ class Search extends React.Component {
           image={this.props.image}
           addComicManually={this.props.addComicManually}
         />
+        <h1 style={h1}>Search ComicVine</h1>
         <ComicSearchComicVine
           name="search"
           type="text"
           onChange={this.handleChange}
+          placeholder="Comicvine"
         />
-        <SubmitButton type="submit" onClick={this.searchForComic} asdf />
+        <SubmitButton type="submit" onClick={this.searchForComic} />
         <ComicWrapper>
           {firstSearch}
         </ComicWrapper>
