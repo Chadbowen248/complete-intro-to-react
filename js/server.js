@@ -12,6 +12,13 @@ app.get("/comicvine_api", (req, res) => {
   Axios.get(URL).then(response => res.send(response.data.results))
 })
 
+app.get("/saveImage/:imageUrl", (req, res) => {
+  const imageData = req.params.imageUrl
+  const decodedImg = decodeURIComponent(imageData);
+  res.send("sent ok")
+  console.log(decodedImg, ' yup this is working')
+})
+
 app.listen(3000, () => console.log("Example app listening on port 3000!"))
 
 
