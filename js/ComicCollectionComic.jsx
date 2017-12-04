@@ -28,52 +28,65 @@ const ComicDeleteBtn = styled.button`
 
 class ComicCollectionComic extends React.Component {
   state = {}
-//   imageLoaded = () => {
+//     imageLoaded = () => {
 //     const image = document.getElementById(this.props.details.id)
 //     const imgCanvas = document.createElement("canvas")
 //     const imgContext = imgCanvas.getContext("2d")
+//     const id = `comic-${this.props.details.id}`
+
 //     imgCanvas.width = image.width
 //     imgCanvas.height = image.height
 //     imgContext.drawImage(image, 0, 0, image.width, image.height)
-//     const imgAsDataURL = imgCanvas.toDataURL().toString()
+//     const imgAsDataURL = imgCanvas.toDataURL()
+//     // const formattedData = imgAsDataURL.replace("",)
+
+// // Encode the String
+// // const encodedString = btoa(imgAsDataURL);
+
+// // Decode the String
+// // const decodedString = atob(imgAsDataURL);
 //     // console.log(typeof(imgAsDataURL))
 //     // console.log(imgAsDataURL)
 //     Axios.get(
 //       // `http://localhost:3000/saveImage/fuck`
-//       `http://localhost:3000/saveImage/${imgAsDataURL}`
+//       `http://localhost:3000/saveImage/${imgAsDataURL}/${id}`
 //       // `http://localhost:3000/saveImage`
 //     ).then(res => console.log(res))
 //     // console.log(imgAsDataURL)
 
-//     // try {
-//     //   localStorage.setItem(`comic-${this.props.details.id}`, imgAsDataURL)
-//     // } catch (e) {
-//     //   console.log("Storage failed: " + e)
-//     // }
+
+// // Encode the String
+// const encodedString = btoa(imgAsDataURL);
+
+// // Decode the String
+// const decodedString = atob(imgAsDataURL);
+
+
+
+
+
+
+    // try {
+    //   localStorage.setItem(`comic-${this.props.details.id}`, imgAsDataURL)
+    // } catch (e) {
+    //   console.log("Storage failed: " + e)
+    // }
   
-// }
+
+
 componentDidMount() {
-  const source = this.props.details.image.medium_url
+  const source = this.props.details.image.small_url
+  const id = `comic-${this.props.details.id}`
   const encoded = encodeURIComponent(source)
   Axios.get(
-    `http://localhost:3000/saveImage/${encoded}`
-    // `http://localhost:3000/saveImage/shit`
-    // `http://localhost:3000/saveImage`
+    `http://localhost:3000/saveImage/${encoded}/${id}`
   ).then(res => console.log(res))
-  // console.log(imgAsDataURL)
 }
-// getImage = () => {
-//       Axios.get(
-//       `http://localhost:3000/getImage/${this.props.details.image.medium_url}`
-//       // `http://localhost:3000/saveImage`
-//     ).then(res => console.log(res))
-//     // console.log(imgAsDataURL)
-    
   render() {
     return (
       <SingleComic>
         <ComicImage
-          src={this.props.details.image.medium_url}
+          src={this.props.details.image.small_url}
           crossOrigin="Anonymous"
           id={this.props.details.id}
           alt="comic"

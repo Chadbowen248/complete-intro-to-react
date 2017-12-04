@@ -26,7 +26,7 @@ const wrapper = {
 const ManComic = props => {
   const manualEntryComic = {
     finalName: props.title,
-    image: { medium_url: props.image },
+    image: { small_url: props.image },
     id: `man-${Date.now()}`
   };
   return (

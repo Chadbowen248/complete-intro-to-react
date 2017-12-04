@@ -24,7 +24,7 @@ const ComicCollectionResult = props =>
   // const addButton = props.details.count_of_issues === 1 ? 'Add Me' : 'disabled';
   <SingleComic>
     <ComicImage
-      src={props.details.image.medium_url}
+      src={props.details.image.small_url}
       alt=""
       onLoad={() => props.haveImagesLoaded("results")}
     />
