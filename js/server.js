@@ -16,36 +16,12 @@ app.get("/comicvine_api", (req, res) => {
 
 app.get("/saveImage/:imageUrl/:id", (req, res) => {
   const imageData = req.params.imageUrl
-  const comicId = req.params.id  
+  const comicId = req.params.id
   const imgUrl = decodeURIComponent(imageData);
   console.log(imgUrl)
-  // console.log('content-type:', res.headers['content-type']);
-  // console.log('content-length:', res.headers['content-length']);
-  // request(imgUrl).pipe(fs.createWriteStream(`public/img/${comicId}.jpg`))
-  // 
-  request({
-  url: imgUrl,
-  headers: {
-    'User-Agent': 'request'
-  }
-  // encode: 'binary'
-}, function(error, response, body) {
-    fs.writeFile(`public/img/${comicId}.jpg`, body, 'binary', function (err) {console.log(err)});
-  });
-  // res.send("sent ok")
-  });
-  // console.log(imgUrl, ' yup this is working')
-// })
+  request.get({url: imgUrl, headers:{'User-Agent': 'request'}}).pipe(fs.createWriteStream(`public/img/${comicId}.jpg`)).on("close", () => res.send('asf'))
+
+})
+
 
 app.listen(3000, () => console.log("Example app listening on port 3000!"))
-
-
-
-// var download = function(uri, filename, callback){
-// request.head(uri, function(err, res, body){
-
-// };
-
-// download('https://www.google.com/images/srpr/logo3w.png', 'google.png', function(){
-// console.log('done');
-// });

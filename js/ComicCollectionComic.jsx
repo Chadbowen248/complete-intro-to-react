@@ -28,51 +28,6 @@ const ComicDeleteBtn = styled.button`
 
 class ComicCollectionComic extends React.Component {
   state = {}
-//     imageLoaded = () => {
-//     const image = document.getElementById(this.props.details.id)
-//     const imgCanvas = document.createElement("canvas")
-//     const imgContext = imgCanvas.getContext("2d")
-//     const id = `comic-${this.props.details.id}`
-
-//     imgCanvas.width = image.width
-//     imgCanvas.height = image.height
-//     imgContext.drawImage(image, 0, 0, image.width, image.height)
-//     const imgAsDataURL = imgCanvas.toDataURL()
-//     // const formattedData = imgAsDataURL.replace("",)
-
-// // Encode the String
-// // const encodedString = btoa(imgAsDataURL);
-
-// // Decode the String
-// // const decodedString = atob(imgAsDataURL);
-//     // console.log(typeof(imgAsDataURL))
-//     // console.log(imgAsDataURL)
-//     Axios.get(
-//       // `http://localhost:3000/saveImage/fuck`
-//       `http://localhost:3000/saveImage/${imgAsDataURL}/${id}`
-//       // `http://localhost:3000/saveImage`
-//     ).then(res => console.log(res))
-//     // console.log(imgAsDataURL)
-
-
-// // Encode the String
-// const encodedString = btoa(imgAsDataURL);
-
-// // Decode the String
-// const decodedString = atob(imgAsDataURL);
-
-
-
-
-
-
-    // try {
-    //   localStorage.setItem(`comic-${this.props.details.id}`, imgAsDataURL)
-    // } catch (e) {
-    //   console.log("Storage failed: " + e)
-    // }
-  
-
 
 componentDidMount() {
   const source = this.props.details.image.small_url
@@ -83,12 +38,13 @@ componentDidMount() {
   ).then(res => console.log(res))
 }
   render() {
+    const image = `public/img/comic-${this.props.details.id}.jpg`
+
     return (
       <SingleComic>
         <ComicImage
-          src={this.props.details.image.small_url}
+          src={image}
           crossOrigin="Anonymous"
-          id={this.props.details.id}
           alt="comic"
           // onLoad={() => this.imageLoaded()}
         />
