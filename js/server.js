@@ -18,8 +18,9 @@ app.get("/saveImage/:imageUrl/:id", (req, res) => {
   const imageData = req.params.imageUrl
   const comicId = req.params.id
   const imgUrl = decodeURIComponent(imageData);
-  console.log(imgUrl)
-  request.get({url: imgUrl, headers:{'User-Agent': 'request'}}).pipe(fs.createWriteStream(`public/img/${comicId}.jpg`)).on("close", () => res.send('asf'))
+  request.get({url: imgUrl, headers:{'User-Agent': 'request'}})
+  .pipe(fs.createWriteStream(`public/img/${comicId}.jpg`))
+  .on("close", () => res.send(`public/img/${comicId}.jpg`))
 
 })
 

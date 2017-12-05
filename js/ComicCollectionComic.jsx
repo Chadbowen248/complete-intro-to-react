@@ -27,26 +27,27 @@ const ComicDeleteBtn = styled.button`
 `
 
 class ComicCollectionComic extends React.Component {
-  state = {}
+  state = {
+    imgSrc: ''
+  }
 
 componentDidMount() {
   const source = this.props.details.image.small_url
   const id = `comic-${this.props.details.id}`
   const encoded = encodeURIComponent(source)
+
   Axios.get(
     `http://localhost:3000/saveImage/${encoded}/${id}`
-  ).then(res => console.log(res))
+  ).then(res => this.setState({imgSrc: res.data}))
 }
   render() {
-    const image = `public/img/comic-${this.props.details.id}.jpg`
 
     return (
       <SingleComic>
         <ComicImage
-          src={image}
+          src={this.state.imgSrc}
           crossOrigin="Anonymous"
           alt="comic"
-          // onLoad={() => this.imageLoaded()}
         />
         <ComicTitle>
           {this.props.details.finalName.length > 47
