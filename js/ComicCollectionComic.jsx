@@ -28,7 +28,7 @@ const ComicDeleteBtn = styled.button`
 
 class ComicCollectionComic extends React.Component {
   state = {
-    imgSrc: ''
+    imgDownloaded: false
   }
 
 componentDidMount() {
@@ -38,7 +38,7 @@ componentDidMount() {
 
   Axios.get(
     `http://localhost:3000/saveImage/${encoded}/${id}`
-  ).then(res => this.setState({imgSrc: res.data}))
+  ).then(res => this.setState({imgDownloaded: res.data}))
 }
   render() {
 
