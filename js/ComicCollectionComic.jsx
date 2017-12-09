@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import Axios from "axios";
 import { shape, func } from "prop-types"
 
 const SingleComic = styled.div`
-width: 23%;
+width: 18%;
 margin-left: 1%;
 border: 1px solid #ccc;
 padding: 1em;
+padding-bottom: 2em;
 margin-top: .5em;
 margin-bottom: .5em;
 margin-right: 1%;
@@ -24,6 +24,9 @@ color: #333;
 const ComicDeleteBtn = styled.button`
   background-color: transparent;
   border: none;
+  position: relative;
+  right: 7px;
+  bottom: -5px;
 `
 
 class ComicCollectionComic extends React.Component {
@@ -31,27 +34,30 @@ class ComicCollectionComic extends React.Component {
     imgDownloaded: false
   }
 
-componentDidMount() {
+// componentDidMount() {
+  // const source = this.props.details.image.small_url
+  // const id = `comic-${this.props.details.id}`
+//   const encoded = encodeURIComponent(source)
+
+//   Axios.get(
+//     `http://localhost:3000/saveImage/${encoded}/${id}`
+//   ).then(res => this.setState({imgDownloaded: res.data}))
+// }
+  render() {
   const source = this.props.details.image.small_url
   const id = `comic-${this.props.details.id}`
   const encoded = encodeURIComponent(source)
-
-  Axios.get(
-    `http://localhost:3000/saveImage/${encoded}/${id}`
-  ).then(res => this.setState({imgDownloaded: res.data}))
-}
-  render() {
-
     return (
       <SingleComic>
         <ComicImage
-          src={this.state.imgSrc}
+          // src={`public/img/comic-${this.props.details.id}.jpg`}
+          src={`http://localhost:3000/saveImage/${encoded}/${id}`}
           crossOrigin="Anonymous"
-          alt="comic"
+          alt={this.props.details.finalName}
         />
         <ComicTitle>
-          {this.props.details.finalName.length > 47
-            ? `${this.props.details.finalName.substring(0, 47)} ...`
+          {this.props.details.finalName.length > 34
+            ? `${this.props.details.finalName.substring(0, 34)} ...`
             : this.props.details.finalName}
         </ComicTitle>
         <ComicDeleteBtn
