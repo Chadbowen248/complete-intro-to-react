@@ -30,23 +30,15 @@ const ComicDeleteBtn = styled.button`
 `
 
 class ComicCollectionComic extends React.Component {
-  state = {
-    imgDownloaded: false
+
+  shouldComponentUpdate() {
+    return false
   }
-
-// componentDidMount() {
-  // const source = this.props.details.image.small_url
-  // const id = `comic-${this.props.details.id}`
-//   const encoded = encodeURIComponent(source)
-
-//   Axios.get(
-//     `http://localhost:3000/saveImage/${encoded}/${id}`
-//   ).then(res => this.setState({imgDownloaded: res.data}))
-// }
+  
   render() {
-  const source = this.props.details.image.small_url
-  const id = `comic-${this.props.details.id}`
-  const encoded = encodeURIComponent(source)
+    const source = this.props.details.image.small_url
+    const id = `comic-${this.props.details.id}`
+    const encoded = encodeURIComponent(source)
     return (
       <SingleComic>
         <ComicImage
@@ -62,7 +54,10 @@ class ComicCollectionComic extends React.Component {
         </ComicTitle>
         <ComicDeleteBtn
           className="comic-delete-button"
-          onClick={() => this.props.removeComic(`comic-${this.props.details.id}`)}
+          onClick={e => {
+            e.preventDefault()
+            this.props.removeComic(`comic-${this.props.details.id}`)
+          }}
         >
           <img src="public/img/close.png" alt="close" />
         </ComicDeleteBtn>

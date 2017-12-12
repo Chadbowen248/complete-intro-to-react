@@ -62,7 +62,7 @@ class App extends React.Component {
     collection[`comic-${comic.id}`] = comic;
     this.setState({ collection });
 
-    // alert(`${comic.finalName} added!!`)
+    alert(`${comic.finalName} added!!`)
     // localStorage.setItem(`comic-${comic.id}`, JSON.stringify(comic))
   };
 

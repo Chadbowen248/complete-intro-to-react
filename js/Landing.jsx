@@ -27,6 +27,7 @@ class ComicCollection extends React.Component {
   };
 
   handleSearchTermChange = event => {
+    event.preventDefault()
     this.setState({ searchTerm: event.target.value });
   };
 
