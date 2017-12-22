@@ -1,7 +1,8 @@
+/* eslint no-console:0 */
+
 const express = require("express")
 const cors = require('cors');
 const Axios = require("axios")
-// const fs = require("fs")
 const request = require("request")
 
 const app = express()
@@ -16,12 +17,6 @@ app.get("/comicvine_api", (req, res) => {
 
 app.get("/saveImage/:imageUrl/:id", (req, res) => {
   const imageData = req.params.imageUrl
-  const comicId = req.params.id
-  // res.set({
-  //   'Content-Type': 'text/plain',
-  //   'Content-Length': '123',
-  //   'fuck': 'public'
-  // })
   res.writeHead(200, {
     'Content-Type': 'image/jpeg' ,
     'Cache-Control': 'max-age=31536000',
@@ -36,9 +31,6 @@ app.get("/saveImage/:imageUrl/:id", (req, res) => {
     }
   })
   .pipe(res)
-  // .pipe(fs.createWriteStream(`public/img/${comicId}.jpg`))
-  // .on("close", () => res.send())
-
 })
 
 

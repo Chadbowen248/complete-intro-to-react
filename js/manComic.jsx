@@ -1,4 +1,5 @@
 import React from "react";
+import { string, func } from "prop-types";
 
 const inputStyle = {
   margin: '0 auto',
@@ -49,6 +50,14 @@ const ManComic = props => {
 
     </div>
   );
+};
+
+ManComic.propTypes = {
+  title: string.isRequired,
+  image: string.isRequired,
+  handleTitleInput: func.isRequired,
+  handleImagePath: func.isRequired,
+  addComicManually: func.isRequired
 };
 
 export default ManComic;

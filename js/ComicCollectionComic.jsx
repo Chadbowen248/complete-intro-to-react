@@ -34,7 +34,7 @@ class ComicCollectionComic extends React.Component {
   shouldComponentUpdate() {
     return false
   }
-  
+
   render() {
     const source = this.props.details.image.small_url
     const id = `comic-${this.props.details.id}`
@@ -42,7 +42,6 @@ class ComicCollectionComic extends React.Component {
     return (
       <SingleComic>
         <ComicImage
-          // src={`public/img/comic-${this.props.details.id}.jpg`}
           src={`http://localhost:3000/saveImage/${encoded}/${id}`}
           crossOrigin="Anonymous"
           alt={this.props.details.finalName}

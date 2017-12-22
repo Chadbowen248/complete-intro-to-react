@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import styled from "styled-components";
+import { string, func } from "prop-types";
 import ComicCollectionResult from "./ComicCollectionResult";
 import ManComic from "./manComic";
 
@@ -70,7 +71,7 @@ class Search extends React.Component {
 
     return (
       <div>
-        <h1 style={h1} >Add a comic</h1>
+        <h1 style={h1}>Add a comic</h1>
         <ManComic
           handleTitleInput={this.props.handleTitleInput}
           title={this.props.title}
@@ -94,5 +95,14 @@ class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  title: string.isRequired,
+  image: string.isRequired,
+  handleTitleInput: func.isRequired,
+  handleImagePath: func.isRequired,
+  addComicManually: func.isRequired,
+  addComic: func.isRequired
+};
 
 export default Search;

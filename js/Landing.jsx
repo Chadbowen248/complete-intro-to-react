@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { shape } from "prop-types";
+import { object, func } from "prop-types";
 import ComicCollectionComic from "./ComicCollectionComic";
 
 const ComicWrapper = styled.div`
@@ -75,7 +75,8 @@ class ComicCollection extends React.Component {
   }
 }
 ComicCollection.propTypes = {
-  collection: shape.isRequired,
+  collection: object.isRequired,
+  removeComic: func.isRequired
 };
 
 export default ComicCollection;

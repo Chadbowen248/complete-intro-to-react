@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom"
-import styled from "styled-components"
-
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const NavigationDiv = styled.div`
 width: 100%;
@@ -18,21 +17,16 @@ text-decoration: none;
 font-family: 'Coda', sans-serif;
 text-transform: uppercase;
 font-size: 1.5em;
-`
+`;
 const Navigation = () => (
   <NavigationDiv>
     <NavLink to="/">
       Collection
-    </ NavLink>
+    </NavLink>
     <NavLink to="/search">
       Search
-    </ NavLink>
+    </NavLink>
   </NavigationDiv>
 );
 
 export default Navigation;
-
-// this should be where you add comics from comic vine
-
-
-
